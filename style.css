@@ -1,0 +1,14 @@
+#Green {
+    color: green;
+}
+#Yellow {
+    color: darkorange;
+}
+#Red {
+    color: red;
+}
+
+#suggestion:hover{
+    background-color: gray;
+    color: white;
+} 
