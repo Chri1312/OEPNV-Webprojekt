@@ -8,7 +8,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-CREATE TABLE `ubahn` (
+CREATE TABLE `underground_berlin` (
   `Station` varchar(100) NOT NULL,
   `Linie` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `Bezirk` varchar(50) NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE `ubahn` (
   `Longitude` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `ubahn` (`Station`, `Linie`, `Bezirk`, `Ersteröffnung`, `Latitude`, `Longitude`) VALUES
+INSERT INTO `underground_berlin` (`Station`, `Linie`, `Bezirk`, `Ersteröffnung`, `Latitude`, `Longitude`) VALUES
 ('Adenauerplatz', 'U7', 'Charlottenburg-Wilmersdorf', '1978-04-28', 52.49980086223966, 13.306986292237148),
 ('Afrikanische Straße', 'U6', 'Mitte', '1956-05-03', 52.56049297624248, 13.334227824769739),
 ('Alexanderplatz', 'U2, U5, U8', 'Mitte', '1913-07-01', 52.52151294223606, 13.41128587175063),
@@ -197,7 +197,7 @@ INSERT INTO `ubahn` (`Station`, `Linie`, `Bezirk`, `Ersteröffnung`, `Latitude`,
 --
 -- Indizes für die Tabelle `ubahn`
 --
-ALTER TABLE `ubahn`
+ALTER TABLE `underground_berlin`
   ADD PRIMARY KEY (`Station`);
 COMMIT;
 
