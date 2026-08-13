@@ -12,6 +12,8 @@ next.addEventListener("mousedown", reset_html)
 
 let html_content = "";
 async function use_input(event) {
+    if (event.target.id != "suggestion") {return -1;} // Verhindert, dass Klick auf <DIV> einen Fehler gibt, da nur Inhalt eines <p> erwartet wird
+
     let station = event.target.textContent.replace(" " + count_only_letters(event.target.textContent), "");
     input_field.value = "";
     suggest_div.innerHTML = "";
