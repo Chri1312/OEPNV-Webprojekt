@@ -12,7 +12,7 @@ next.addEventListener("mousedown", reset_html)
 
 let html_content = "";
 async function use_input(event) {
-    let station = event.target.innerHTML;
+    let station = event.target.textContent.replace(" " + count_only_letters(event.target.textContent), "");
     input_field.value = "";
     suggest_div.innerHTML = "";
     try {
@@ -31,14 +31,16 @@ async function use_input(event) {
             html_content += "<p> FEHLER! </p>"
         } else {
             if (data.direction != "") {
-                html_content += "<div id=guess><p> Die gesuchte Station liegt im <b>" + data.direction + "</b> von <i><b>" + data.guess + "</b></i> </p>";
-                html_content += "<p id=" + data.correct_lines + ">" + data.lines + "</p></div>"
+                html_content += "<div id=guess><p> Die gesuchte Station liegt im <b>" + data.direction + "</b> von <i><b>" + data.guess + "</b> " + count_only_letters(data.guess) + "</i> </p>";
             } else {
-                html_content += "<div id=guess><p> Die gesuchte Station wurde gefunden: <i><b>" + data.guess + "</b></i> </p>";
-                html_content += "<p id=" + data.correct_lines + ">" + data.lines + "</p></div>";
+                html_content += "<div id=guess><p> Die gesuchte Station wurde gefunden: <i><b>" + data.guess + "</b> " + count_only_letters(data.guess) + "</i> </p>";
                 next.innerHTML = "<p id=suggestion>Nächste Runde</p>";
                 input_field.setAttribute("disabled", "disabled");
             }
+            html_content += "<p id=" + data.correct_lines + ">" + data.lines + "</p>";
+            html_content += "<p id=" + data.correct_district + ">" + data.district + "</p>";
+            html_content += "<p id='" + data.correct_len + "'> Anzahl Buchstaben: <i>" + count_only_letters(data.guess) + "</i></p></div>";
+
         }
     } catch(e) {
         html_content = "<p>" + e + "</p>";
@@ -69,15 +71,19 @@ async function get_stations() {
 let html_suggest = "";
 function suggest(event) {
     html_suggest = "";
-
     let limit = 3;
     for (let i = 0; i < stationsliste.length; i++) {
         if (stationsliste[i][0].toLowerCase().startsWith(event.target.value.toLowerCase()) && limit > 0 && event.target.value != "") {
-            html_suggest += "<p>" + stationsliste[i][0] + "</p>";
+            html_suggest += "<p id='suggestion'>" + stationsliste[i][0] + " <i>" + count_only_letters(stationsliste[i][0]) + "</i></p>";
             limit -= 1;
         }
     }
     suggest_div.innerHTML = html_suggest;
+}
+
+function count_only_letters(text) {
+    let letter_text = text.replaceAll(new RegExp("[^A-Za-zäöüÄÖÜß]", "g"), "");
+    return "(" + letter_text.length + ")"
 }
 
 function reset_html() {

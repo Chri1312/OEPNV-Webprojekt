@@ -9,6 +9,6 @@
 }
 
 #suggestion:hover{
-    background-color: gray;
-    color: white;
+    color: darkblue;
+    text-decoration: underline;
 } 

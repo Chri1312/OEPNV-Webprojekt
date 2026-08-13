@@ -78,6 +78,7 @@
         };
     } else {$direction = "";}
 
+    // An Station verkehrende Linien
     $guess_line_arr = array_map('trim', explode(",", $guess_row["Linie"]));
     $ziel_line_arr = array_map('trim', explode(",", $ziel_row["Linie"]));
     if ($guess_line_arr == $ziel_line_arr) {
@@ -85,6 +86,20 @@
     } elseif (!empty(array_intersect($ziel_line_arr, $guess_line_arr))) {
         $correct_lines = "Yellow";
     } else {$correct_lines = "Red";}
+
+    // Korrekter Bezirk
+    if ($guess_row["Bezirk"] == $ziel_row["Bezirk"]) {
+        $correct_district = "Green";
+    } else {$correct_district = "Red";}
+    
+    // Stationsnamen-Länge
+    $guess_len = strlen(preg_replace("/[^A-Za-zäöüÄÖÜß]/", "", $guess_row["Station"]));
+    $ziel_len = strlen(preg_replace("/[^A-Za-zäöüÄÖÜß]/", "", $ziel_row["Station"]));
+    if ($guess_len == $ziel_len) {
+        $correct_word_count = "Green";
+    } else if (abs($guess_len - $ziel_len) <= 2) {
+        $correct_word_count = "Yellow";
+    } else {$correct_word_count = "Red";}
 
     // Schließen der Datenbankverbindung
     mysqli_close($connection);
@@ -95,7 +110,10 @@
         "guess" => $guess_row["Station"],
         "direction" => $direction,
         "correct_lines" => $correct_lines,
-        "lines" => $guess_row["Linie"]
+        "lines" => $guess_row["Linie"],
+        "correct_district" => $correct_district,
+        "district" => $guess_row["Bezirk"],
+        "correct_len" => $correct_word_count
     ];
     echo json_encode($data_to_send);
 ?>
