@@ -93,8 +93,8 @@
     } else {$correct_district = "Red";}
     
     // Stationsnamen-Länge
-    $guess_len = strlen(preg_replace("/[^A-Za-zäöüÄÖÜß]/", "", $guess_row["Station"]));
-    $ziel_len = strlen(preg_replace("/[^A-Za-zäöüÄÖÜß]/", "", $ziel_row["Station"]));
+    $guess_len = mb_strlen(preg_replace("/[^A-Za-zäöüÄÖÜß]/", "", $guess_row["Station"]));
+    $ziel_len = mb_strlen(preg_replace("/[^A-Za-zäöüÄÖÜß]/", "", $ziel_row["Station"]));
     if ($guess_len == $ziel_len) {
         $correct_word_count = "Green";
     } else if (abs($guess_len - $ziel_len) <= 2) {
