@@ -1,3 +1,12 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Erstellungszeit: 02. Sep 2026 um 14:22
+-- Server-Version: 10.4.32-MariaDB
+-- PHP-Version: 8.2.12
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -8,6 +17,205 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+--
+-- Datenbank: `oepnv_stationen_berlin`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `sbahn_berlin`
+--
+
+CREATE TABLE `sbahn_berlin` (
+  `Station` varchar(100) NOT NULL,
+  `Linie` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `Bezirk` varchar(50) NOT NULL,
+  `Ersteröffnung` date DEFAULT NULL,
+  `Latitude` double NOT NULL,
+  `Longitude` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Daten für Tabelle `sbahn_berlin`
+--
+
+INSERT INTO `sbahn_berlin` (`Station`, `Linie`, `Bezirk`, `Ersteröffnung`, `Latitude`, `Longitude`) VALUES
+('Adlershof', 'S46, S8, S85, S9', 'Treptow-Köpenick', NULL, 52.43557850473056, 13.540296366709775),
+('Ahrensfelde', 'S7', 'Marzahn-Hellersdorf', NULL, 52.57134444416543, 13.565706608614976),
+('Alexanderplatz', 'S3, S5, S7, S9', 'Mitte', NULL, 52.521508166110344, 13.411248100435284),
+('Alt-Reinickendorf', 'S25', 'Reinickendorf', NULL, 52.57796063487105, 13.350069553945668),
+('Altglienicke', 'S85, S9', 'Treptow-Köpenick', NULL, 52.40768228229898, 13.55937770215766),
+('Anhalter Bahnhof', 'S1, S2, S25, S26', 'Friedrichshain-Kreuzberg', NULL, 52.504569286998034, 13.381789919807025),
+('Attilastraße', 'S2', 'Tempelhof-Schöneberg', NULL, 52.44756536818922, 13.36103082185197),
+('Babelsberg', 'S7', 'Potsdam', NULL, 52.391481439054125, 13.093173079389478),
+('Baumschulenweg', 'S46, S47, S8, S85, S9', 'Treptow-Köpenick', NULL, 52.46762089136434, 13.489534292774723),
+('Bellevue', 'S3, S5, S7, S9', 'Mitte', NULL, 52.5200535434071, 13.348409525053835),
+('Bergfelde', 'S8', 'Oberhavel', NULL, 52.66988054865995, 13.32132048195056),
+('Bernau', 'S2', 'Barnim', NULL, 52.676253630344696, 13.593418960851848),
+('Bernau-Friedenstal', 'S2', 'Barnim', NULL, 52.66838236110218, 13.564518349906713),
+('Betriebsbahnhof Rummelsburg', 'S3', 'Lichtenberg', NULL, 52.49359925497556, 13.498333850791667),
+('Beusselstraße', 'S41, S42', 'Mitte', NULL, 52.534300542988795, 13.328723024403585),
+('Biesdorf', 'S5', 'Marzahn-Hellersdorf', NULL, 52.513197197758934, 13.554844173493974),
+('Birkenstein', 'S5', 'Märkisch-Oderland', NULL, 52.51571717770514, 13.647746367167237),
+('Birkenwerder', 'S1, S8', 'Oberhavel', NULL, 52.68825686181157, 13.288889164032915),
+('Blankenburg', 'S2, S26, S8', 'Pankow', NULL, 52.59094569457466, 13.442923610730762),
+('Blankenfelde', 'S2', 'Teltow-Fläming', NULL, 52.337046325760504, 13.41639664568479),
+('Borgsdorf', 'S1', 'Oberhavel', NULL, 52.71536724061614, 13.276526259590314),
+('Bornholmer Straße', 'S1, S2, S25, S26, S8, S85', 'Pankow', NULL, 52.55449419964448, 13.397884246554035),
+('Botanischer Garten', 'S1', 'Steglitz-Zehlendorf', NULL, 52.44797153722852, 13.307254941502613),
+('Brandenburger Tor', 'S1, S2, S25, S26', 'Mitte', NULL, 52.516535469196064, 13.38149646719923),
+('Buch', 'S2', 'Pankow', NULL, 52.636524719590646, 13.492269462274592),
+('Buckower Chaussee', 'S2', 'Tempelhof-Schöneberg', NULL, 52.41089001817408, 13.382566456593171),
+('Bundesplatz', 'S41, S42, S46', 'Bundesplatz', NULL, 52.47763569093404, 13.328967223502689),
+('Charlottenburg', 'S3, S5, S7, S9', 'Charlottenburg-Wilmersdorf', NULL, 52.50502882529646, 13.302894291954336),
+('Eichborndamm', 'S25', 'Reinickendorf', NULL, 52.57761683282531, 13.316584889396225),
+('Eichwalde', 'S46, S8', 'Dahme-Spreewald', NULL, 52.37170220503396, 13.615218943648578),
+('Erkner', 'S3', 'Oder-Spree', NULL, 52.428696641845455, 13.752251351104379),
+('Feuerbachstraße', 'S1', 'Steglitz-Zehlendorf', NULL, 52.463637877399925, 13.332309090574507),
+('Flughafen BER', 'S85, S9', 'Dahme-Spreewald', NULL, 52.364851293351, 13.512598540146433),
+('Frankfurter Allee', 'S41, S42, S8, S85', 'Friedrichshain-Kreuzberg', NULL, 52.514272812215744, 13.474674494859814),
+('Fredersdorf', 'S5', 'Märkisch-Oderland', NULL, 52.52628750286118, 13.76111634287038),
+('Friedenau', 'S1', 'Tempelhof-Schöneberg', NULL, 52.47000506328554, 13.340648682742007),
+('Friedrichsfelde Ost', 'S5, S7, S75', 'Marzahn-Hellersdorf', NULL, 52.51413176625744, 13.520063878035652),
+('Friedrichshagen', 'S3', 'Treptow-Köpenick', NULL, 52.45737133557036, 13.62421947962866),
+('Friedrichstraße', 'S1, S2, S25, S26, S3, S5, S7, S9', 'Mitte', NULL, 52.52030105988663, 13.38725969300854),
+('Frohnau', 'S1, S85', 'Reinickendorf', NULL, 52.63296067478306, 13.289536004774346),
+('Gehrenseestraße', 'S75', 'Lichtenberg', NULL, 52.55621095519811, 13.52507575720258),
+('Gesundbrunnen', 'S1, S15, S2, S25, S26, S41, S42', 'Mitte', NULL, 52.548802817496735, 13.388819878159968),
+('Greifswalder Straße', 'S41, S42, S8, S85', 'Pankow', NULL, 52.540727221904795, 13.438400732671774),
+('Griebnitzsee', 'S7', 'Potsdam', NULL, 52.39453897120352, 13.127940598652547),
+('Grünau', 'S46, S8', 'Treptow-Köpenick', NULL, 52.413198756697945, 13.573788454613291),
+('Grünbergallee', 'S85, S9', 'Treptow-Köpenick', NULL, 52.399070354906854, 13.540201056223266),
+('Grunewald', 'S7', 'Charlottenburg-Wilmersdorf', NULL, 52.48863302948106, 13.26220083821069),
+('Hackescher Markt', 'S3, S5, S7, S9', 'Mitte', NULL, 52.52259940034714, 13.40237625540519),
+('Halensee', 'S41, S42, S46', 'Charlottenburg-Wilmersdorf', NULL, 52.496593424137025, 13.28989483564581),
+('Hauptbahnhof', 'S15, S3, S5, S7, S9', 'Mitte', NULL, 52.52505240018227, 13.369366598906177),
+('Heerstraße', 'S3, S9', 'Charlottenburg-Wilmersdorf', NULL, 52.50789542754358, 13.26005637380182),
+('Hegermühle', 'S5', 'Märkisch-Oderland', NULL, 52.54881418431412, 13.866555543450348),
+('Heidelberger Platz', 'S41, S42, S46', 'Charlottenburg-Wilmersdorf', NULL, 52.480204581176025, 13.311756403991392),
+('Heiligensee', 'S25', 'Reinickendorf', NULL, 52.6247963284203, 13.229067613058263),
+('Hennigsdorf', 'S25', 'Oberhavel', NULL, 52.637831904455744, 13.205444416521846),
+('Hermannstraße', 'S41, S42, S46, S47', 'Neukölln', NULL, 52.467616069589525, 13.430871155056387),
+('Hermsdorf', 'S1, S85', 'Reinickendorf', NULL, 52.618167633840464, 13.306790233489286),
+('Hirschgarten', 'S3', 'Treptow-Köpenick', NULL, 52.45793715486902, 13.60278229751466),
+('Hohen Neuendorf', 'S1, S8', 'Oberhavel', NULL, 52.66909286205839, 13.287082866538864),
+('Hohenschönhausen', 'S75', 'Lichtenberg', NULL, 52.56581738640904, 13.513104707498854),
+('Hohenzollerndamm', 'S41, S42, S46', 'Charlottenburg-Wilmersdorf', NULL, 52.488487203180206, 13.300848177725056),
+('Hoppegarten', 'S5', 'Märkisch-Oderland', NULL, 52.518111642737104, 13.673115978783267),
+('Humboldthain', 'S1, S2, S25, S26', 'Mitte', NULL, 52.54434151055913, 13.378769051165529),
+('Innsbrucker Platz', 'S41, S42, S46', 'Tempelhof-Schöneberg', NULL, 52.47829379795632, 13.343830337861998),
+('Jannowitzbrücke', 'S3, S5, S7, S9', 'Mitte', NULL, 52.514146595262616, 13.41969102716596),
+('Johannisthal', 'S46, S8, S85, S9', 'Treptow-Köpenick', NULL, 52.44661477800392, 13.524329381064177),
+('Julius-Leber-Brücke', 'S1', 'Tempelhof-Schöneberg', NULL, 52.48639370007421, 13.360864081678777),
+('Jungfernheide', 'S41, S42', 'Charlottenburg-Wilmersdorf', NULL, 52.53068907462354, 13.300484502395395),
+('Karl-Bonhoeffer-Nervenklinik', 'S25', 'Reinickendorf', NULL, 52.57788268360742, 13.329257882330921),
+('Karlshorst', 'S3', 'Lichtenberg', NULL, 52.481102872353205, 13.525975524144359),
+('Karow', 'S2', 'Pankow', NULL, 52.6147514783433, 13.469004236342242),
+('Kaulsdorf', 'S5', 'Marzahn-Hellersdorf', NULL, 52.51212067114077, 13.590509642009843),
+('Köllnische Heide', 'S46, S47', 'Neukölln', NULL, 52.46918336271381, 13.46724524003697),
+('Königs Wusterhausen', 'S46', 'Dahme-Spreewald', NULL, 52.29663858180207, 13.631192423284267),
+('Köpenick', 'S3', 'Treptow-Köpenick', NULL, 52.45871376916809, 13.58002299938991),
+('Landsberger Allee', 'S41, S42, S8, S85', 'Pankow', NULL, 52.52917626211474, 13.455059450563425),
+('Lankwitz', 'S25, S26', 'Steglitz-Zehlendorf', NULL, 52.43900158647766, 13.342239197638056),
+('Lehnitz', 'S1', 'Oberhavel', NULL, 52.741389730281966, 13.26328835618683),
+('Lichtenberg', 'S5, S7, S75', 'Lichtenberg', NULL, 52.51016475178019, 13.49666902464042),
+('Lichtenrade', 'S2', 'Tempelhof-Schöneberg', NULL, 52.387294277829504, 13.396171362446664),
+('Lichterfelde Ost', 'S25, S26', 'Steglitz-Zehlendorf', NULL, 52.429693968575364, 13.328910780899546),
+('Lichterfelde Süd', 'S25, S26', 'Steglitz-Zehlendorf', NULL, 52.41076171366391, 13.30894850595834),
+('Lichterfelde West', 'S1', 'Steglitz-Zehlendorf', NULL, 52.44339385783784, 13.293752493511128),
+('Mahlow', 'S2', 'Teltow-Fläming', NULL, 52.36019824112769, 13.408478562195588),
+('Mahlsdorf', 'S5', 'Marzahn-Hellersdorf', NULL, 52.5120836708813, 13.611924899678495),
+('Marienfelde', 'S2', 'Tempelhof-Schöneberg', NULL, 52.42353202472802, 13.374846926541974),
+('Marzahn', 'S7', 'Marzahn-Hellersdorf', NULL, 52.54379732012231, 13.541501386543755),
+('Mehrower Allee', 'S7', 'Marzahn-Hellersdorf', NULL, 52.55776972393205, 13.553647705510732),
+('Messe Nord / ZOB', 'S41, S42, S46', 'Charlottenburg-Wilmersdorf', NULL, 52.50668710969094, 13.282869626628369),
+('Messe Süd', 'S3, S9', 'Charlottenburg-Wilmersdorf', NULL, 52.49841085757468, 13.269964959296685),
+('Mexikoplatz', 'S1', 'Steglitz-Zehlendorf', NULL, 52.43701689358142, 13.232704621221432),
+('Mühlenbeck-Mönchmühle', 'S8', 'Oberhavel', NULL, 52.654600040880716, 13.386638905640694),
+('Neuenhagen', 'S5', 'Märkisch-Oderland', NULL, 52.520819252290984, 13.699683653146053),
+('Neukölln', 'S41, S42, S46, S47', 'Neukölln', NULL, 52.469573417625284, 13.442336515200271),
+('Nikolassee', 'S1, S7', 'Steglitz-Zehlendorf', NULL, 52.432152867317654, 13.192994336342629),
+('Nöldnerplatz', 'S5, S7, S75', 'Lichtenberg', NULL, 52.50355527096596, 13.484458947331175),
+('Nordbahnhof', 'S1, S2, S25, S26', 'Mitte', NULL, 52.53191900220745, 13.388394231736147),
+('Oberspree', 'S47', 'Treptow-Köpenick', NULL, 52.45246897567635, 13.538244938235131),
+('Olympiastadion', 'S3, S9', 'Charlottenburg-Wilmersdorf', NULL, 52.51115526034751, 13.241272366402143),
+('Oranienburg', 'S1', 'Oberhavel', NULL, 52.75410603113489, 13.249372301195043),
+('Oranienburger Straße', 'S1, S2, S25, S26', 'Mitte', NULL, 52.52500744232309, 13.392885486176976),
+('Osdorfer Straße', 'S25, S26', 'Steglitz-Zehlendorf', NULL, 52.418259815870066, 13.313724142392127),
+('Ostbahnhof', 'S3, S5, S7, S75, S9', 'Friedrichshain-Kreuzberg', NULL, 52.51080042542662, 13.43506734405138),
+('Ostkreuz', 'S3, S41, S42, S5, S7, S75, S8, S85', 'Friedrichshain-Kreuzberg', NULL, 52.50312593656207, 13.469200970894002),
+('Pankow', 'S2, S26, S8, S85', 'Pankow', NULL, 52.566394284823104, 13.410401528801671),
+('Pankow-Heinersdorf', 'S2, S26, S8', 'Pankow', NULL, 52.57741403549333, 13.428468089680594),
+('Petershagen-Nord', 'S5', 'Märkisch-Oderland', NULL, 52.52907008417987, 13.789934273018435),
+('Pichelsberg', 'S3, S9', 'Charlottenburg-Wilmersdorf', NULL, 52.50992707977697, 13.22848164087053),
+('Plänterwald', 'S8, S85, S9', 'Treptow-Köpenick', NULL, 52.47865084941773, 13.473628657557448),
+('Poelchaustraße', 'S7', 'Marzahn-Hellersdorf', NULL, 52.53570058479198, 13.535525702899045),
+('Potsdam Hauptbahnhof', 'S7', 'Potsdam', NULL, 52.39182982326737, 13.06674235939454),
+('Potsdamer Platz', 'S1, S2, S25, S26', 'Mitte', NULL, 52.508724041365234, 13.37618880328862),
+('Prenzlauer Allee', 'S41, S42, S8, S85', 'Pankow', NULL, 52.544542206245474, 13.426897346299683),
+('Priesterweg', 'S2, S25, S26', 'Tempelhof-Schöneberg', NULL, 52.45952000856608, 13.356042848996738),
+('Rahnsdorf', 'S3', 'Treptow-Köpenick', NULL, 52.45160169364235, 13.691419499917101),
+('Raoul-Wallenberg-Straße', 'S7', 'Marzahn-Hellersdorf', NULL, 52.55073783004144, 13.547614926208809),
+('Rathaus Steglitz', 'S1', 'Steglitz-Zehlendorf', NULL, 52.455544628295705, 13.322551987265667),
+('Röntgental', 'S2', 'Barnim', NULL, 52.64927823130793, 13.514340006909753),
+('Rummelsburg', 'S3', 'Lichtenberg', NULL, 52.50132061311557, 13.478375106646737),
+('Savignyplatz', 'S3, S5, S7, S9', 'Charlottenburg-Wilmersdorf', NULL, 52.505094723503326, 13.319422302449968),
+('Schichauweg', 'S2', 'Tempelhof-Schöneberg', NULL, 52.398539433996916, 13.389348704203384),
+('Schlachtensee', 'S1', 'Steglitz-Zehlendorf', NULL, 52.43979062522576, 13.213987955734046),
+('Schöneberg', 'S1, S41, S42, S46', 'Tempelhof-Schöneberg', NULL, 52.47972510092544, 13.352320058255224),
+('Schönefeld', 'S85, S9', 'Dahme-Spreewald', NULL, 52.391038672161024, 13.513273381994994),
+('Schöneweide', 'S46, S47, S8, S85, S9', 'Treptow-Köpenick', NULL, 52.45503789528231, 13.509694257628194),
+('Schönfließ', 'S8', 'Oberhavel', NULL, 52.664700813638554, 13.339884390753095),
+('Schönhauser Allee', 'S41, S42, S8, S85', 'Pankow', NULL, 52.549327128588374, 13.413644834045208),
+('Schönholz', 'S1, S25, S85', 'Reinickendorf', NULL, 52.57124957952242, 13.38137223440788),
+('Schulzendorf', 'S25', 'Reinickendorf', NULL, 52.61374036668779, 13.2456644946198),
+('Sonnenallee', 'S41, S42', 'Neukölln', NULL, 52.472875698337944, 13.4553521084624),
+('Spandau', 'S3, S9', 'Spandau', NULL, 52.53480335833411, 13.198898459405312),
+('Spindlersfeld', 'S47', 'Treptow-Köpenick', NULL, 52.44729935491092, 13.561480126406202),
+('Springpfuhl', 'S7, S75', 'Marzahn-Hellersdorf', NULL, 52.526028003390884, 13.536925515941617),
+('Storkower Straße', 'S41, S42, S8, S85', 'Pankow', NULL, 52.52383744791156, 13.464541198759),
+('Strausberg', 'S5', 'Märkisch-Oderland', NULL, 52.532178819784484, 13.835482841190565),
+('Strausberg-Nord', 'S5', 'Märkisch-Oderland', NULL, 52.59057307953823, 13.908780739354537),
+('Strausberg-Stadt', 'S5', 'Märkisch-Oderland', NULL, 52.57680195371602, 13.887953668071987),
+('Stresow', 'S3, S9', 'Spandau', NULL, 52.532162852498764, 13.209362739702957),
+('Südende', 'S25, S26', 'Steglitz-Zehlendorf', NULL, 52.44892060335486, 13.354025472497089),
+('Südkreuz', 'S2, S25, S26, S41, S42, S46, S47', 'Tempelhof-Schöneberg', NULL, 52.47504721924133, 13.365305218896562),
+('Sundgauer Straße', 'S1', 'Steglitz-Zehlendorf', NULL, 52.43638855983409, 13.273670236704868),
+('Tegel', 'S25', 'Reinickendorf', NULL, 52.58817429492405, 13.289722025012376),
+('Teltow Stadt', 'S25, S26', 'Potsdam-Mittelmark', NULL, 52.396888406497084, 13.276582380527584),
+('Tempelhof', 'S41, S42, S46, S47', 'Tempelhof-Schöneberg', NULL, 52.47098056569628, 13.384280127049498),
+('Tiergarten', 'S3, S5, S7, S9', 'Mitte', NULL, 52.51393765594448, 13.336518740209018),
+('Treptower Park', 'S41, S42, S8, S85, S9', 'Treptow-Köpenick', NULL, 52.49378564964611, 13.461770252712153),
+('Waidmannslust', 'S1, S85', 'Reinickendorf', NULL, 52.606808273188925, 13.3205609940237),
+('Wannsee', 'S1, S7', 'Steglitz-Zehlendorf', NULL, 52.42142209970789, 13.179225286698552),
+('Warschauer Straße', 'S3, S5, S7, S75, S9', 'Friedrichshain-Kreuzberg', NULL, 52.50533349207543, 13.449123445281513),
+('Wartenberg', 'S75', 'Lichtenberg', NULL, 52.57331774032056, 13.504243585858811),
+('Waßmannsdorf', 'S85, S9', 'Dahme-Spreewald', NULL, 52.368311044727086, 13.463599477203246),
+('Wedding', 'S15, S41, S42', 'Mitte', NULL, 52.542600810574406, 13.366684891863926),
+('Westend', 'S41, S42, S46', 'Charlottenburg-Wilmersdorf', NULL, 52.51848469145437, 13.284368404437998),
+('Westhafen', 'S41, S42', 'Mitte', NULL, 52.53622924453006, 13.343728422959162),
+('Westkreuz', 'S3, S41, S42, S46, S5, S7, S9', 'Charlottenburg-Wilmersdorf', NULL, 52.50105278513743, 13.28463408825738),
+('Wildau', 'S46, S8', 'Dahme-Spreewald', NULL, 52.31918992397875, 13.63374671526248),
+('Wilhelmshagen', 'S3', 'Treptow-Köpenick', NULL, 52.439031845216, 13.721454724274105),
+('Wilhelmsruh', 'S1, S85', 'Reinickendorf', NULL, 52.58147188679541, 13.362980130019825),
+('Wittenau', 'S1, S85', 'Reinickendorf', NULL, 52.59708752110851, 13.33419766972747),
+('Wollankstraße', 'S1, S25, S85', 'Pankow', NULL, 52.565714455991454, 13.391059057596804),
+('Wuhletal', 'S5', 'Marzahn-Hellersdorf', NULL, 52.51270085955354, 13.574913914444172),
+('Wuhlheide', 'S3', 'Treptow-Köpenick', NULL, 52.468812666051264, 13.55399573572481),
+('Yorckstraße', 'S2, S25, S26', 'Tempelhof-Schöneberg', NULL, 52.49237489558246, 13.371581206962285),
+('Yorckstraße (Großgörschenstraße)', 'S1', 'Tempelhof-Schöneberg', NULL, 52.49222777932149, 13.367756767361536),
+('Zehlendorf', 'S1', 'Steglitz-Zehlendorf', NULL, 52.43106699065305, 13.258585617681762),
+('Zepernick', 'S2', 'Barnim', NULL, 52.659456208858444, 13.532975116936308),
+('Zeuthen', 'S46, S8', 'Dahme-Spreewald', NULL, 52.349328155485374, 13.62718028622107),
+('Zoologischer Garten', 'S3, S5, S7, S9', 'Charlottenburg-Wilmersdorf', NULL, 52.50705882009206, 13.332313402166372);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `underground_berlin`
+--
+
 CREATE TABLE `underground_berlin` (
   `Station` varchar(100) NOT NULL,
   `Linie` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
@@ -16,6 +224,10 @@ CREATE TABLE `underground_berlin` (
   `Latitude` double NOT NULL,
   `Longitude` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Daten für Tabelle `underground_berlin`
+--
 
 INSERT INTO `underground_berlin` (`Station`, `Linie`, `Bezirk`, `Ersteröffnung`, `Latitude`, `Longitude`) VALUES
 ('Adenauerplatz', 'U7', 'Charlottenburg-Wilmersdorf', '1978-04-28', 52.49980086223966, 13.306986292237148),
@@ -195,7 +407,17 @@ INSERT INTO `underground_berlin` (`Station`, `Linie`, `Bezirk`, `Ersteröffnung`
 ('Zwickauer Damm', 'U7', 'Neukölln', '1970-01-02', 52.42324530229916, 13.48364947154456);
 
 --
--- Indizes für die Tabelle `ubahn`
+-- Indizes der exportierten Tabellen
+--
+
+--
+-- Indizes für die Tabelle `sbahn_berlin`
+--
+ALTER TABLE `sbahn_berlin`
+  ADD PRIMARY KEY (`Station`);
+
+--
+-- Indizes für die Tabelle `underground_berlin`
 --
 ALTER TABLE `underground_berlin`
   ADD PRIMARY KEY (`Station`);

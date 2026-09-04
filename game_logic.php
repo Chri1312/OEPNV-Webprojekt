@@ -9,11 +9,19 @@
     // Datenbank Login-Daten und Verbindungsaufbau
     include("database_login.php");
     $connection = mysqli_connect($host, $user, $password, $database);
+    $selected_transport = ['sbahn_berlin', 'underground_berlin'];
+
+    $sub_queries = [];
+    foreach($selected_transport as $i) {
+        $sub_queries[] = "SELECT * FROM $i";
+    }
+    $union = implode(" UNION ALL ", $sub_queries);
 
     // Random Ziel-Station generieren oder gespeicherte aus Session-Cookies lesen
     if (!isset($_SESSION["ziel_data"])) {
-        $sql = "SELECT * 
-                FROM underground_berlin 
+        $sql = "SELECT Station, GROUP_CONCAT(Linie SEPARATOR ', ') AS Linie, Bezirk, Ersteröffnung, Latitude, Longitude
+                FROM ($union) AS Vereinigung
+                GROUP BY Station
                 ORDER BY RAND() 
                 LIMIT 1";
         $result = mysqli_query($connection, $sql);
@@ -38,9 +46,10 @@
     
     // Informationen zum Guess abfragen
     $guessed_name = $data_guess["Station"];
-    $sql = "SELECT *
-            FROM underground_berlin
+    $sql = "SELECT Station, GROUP_CONCAT(Linie SEPARATOR ', ') AS Linie, Bezirk, Ersteröffnung, Latitude, Longitude
+            FROM ($union) AS Vereinigung
             WHERE Station = '$guessed_name'
+            GROUP BY Station
             LIMIT 1";
     $result = mysqli_query($connection, $sql);
     $guess_row = mysqli_fetch_assoc($result);
